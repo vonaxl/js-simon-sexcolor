@@ -1,9 +1,10 @@
 var pc=[];
 var player=[];
+var numeroPlayer;
 
 
 // i made a var tempo just to make it easier to change each time  
-var tempo = 10;
+var tempo = 5;
 
 // random pc number
 function pcRandom() {
@@ -57,33 +58,48 @@ function seconds(){
 
 // timer starts after the alert 
 setTimeout(count, tempo*1000);
+var score=0,numScore=[],notValid=false;
 function count(){
-    // ask player 5 times to put a number 
+
+    // ask player 5 times to put a number with verification wether it is already inside the array
     while (player.length<5){
-        var numeroPl = prompt("Inserisci un numero");
-        player.push(numeroPl);
-    }    
-    winLose();
-}
-
-
-// funtion to sort and check if the players got any correct numbers 
-function winLose() {
-    var playerSort=player.sort();
-    var pcSort=pc.sort();
-    console.log("Numeri inseriti dal player = "+playerSort);
-    console.log("Numeri del pc = "+pcSort);
-    
-    
-    perso = false;
-    for (let i = 0; i < pcSort.length; i++) {
-        if (pcSort[i]!=playerSort[i]) {
-            perso = true;
+        numeroPlayer = parseInt(prompt("Inserisci un numero"));
+        for (let p = -1; p < player.length; p++) {
+            if (numeroPlayer===player[p]) {
+                notValid = true;
+                alert("Hai gia inserito questo valore")
+            }
         }
-    }
-    if (perso == false) {
-        console.log("Hai vinto!");
-    }else {
-        console.log("Hai perso");
-    }
+        for (let j = 0; j < pc.length; j++) {
+            if (numeroPlayer == pc[j] && notValid===false) {
+                numScore.push(pc[j]);
+                 score++;
+                }            
+            }
+            player.push(numeroPlayer);  
+        }    
+    console.log("=================================================");
+    console.log("I numeri da ricordare erano : "+pc);
+    console.log("Il player ha inserito i seguenti numeri :"+player);
+    console.log("=================================================");
+    
+    
+    console.log("Il punteggio del player :"+score+" ha beccato questi numeri :"+numScore);
 }
+
+//        
+// function winLose() {
+    
+    
+//     perso = false;
+//     for (let i = 0; i < pcSort.length; i++) {
+//         if (pcSort[i]!=playerSort[i]) {
+//             perso = true;
+//         }
+//     }
+//     if (perso == false) {
+//         console.log("Hai vinto!");
+//     }else {
+//         console.log("Hai perso");
+//     }
+// }
