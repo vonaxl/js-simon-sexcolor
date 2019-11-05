@@ -62,19 +62,8 @@ function count(){
     while (player.length<5){
         numeroPlayer = parseInt(prompt("Inserisci un numero da 1 a 100"));
         if (numeroPlayer<=100 && numeroPlayer>=1) {
-            for (let p = -1; p < player.length; p++) {
-                if (numeroPlayer===player[p]) {
-                    notValid = true;
-                    alert("Hai gia inserito questo valore")
-                    player.pop();
-                }
-            }
-            for (let j = 0; j < pc.length; j++) {
-                if (numeroPlayer == pc[j] && notValid===false) {
-                    numScore.push(pc[j]);
-                     score++;
-                }            
-            }
+            checkPlayer();
+            checkPc();
             player.push(numeroPlayer);  
         }
         else{
@@ -87,4 +76,23 @@ function count(){
     console.log("=================================================");
     
     console.log("Il punteggio del player :"+score+" ha beccato questi numeri :"+numScore);
+}
+
+function checkPlayer() {
+    for (let p = -1; p < player.length; p++) {
+        if (numeroPlayer===player[p]) {
+            notValid = true;
+            alert("Hai gia inserito questo valore")
+            player.pop();
+        }
+    }
+}
+
+function checkPc() {
+    for (let j = 0; j < pc.length; j++) {
+        if (numeroPlayer == pc[j] && notValid===false) {
+            numScore.push(pc[j]);
+             score++;
+        }            
+    }
 }
