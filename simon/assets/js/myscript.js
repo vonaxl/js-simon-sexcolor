@@ -39,7 +39,6 @@ while (pc.length<5) {
     check5();
 }    
 
-
 // show result as alert then timer starts
 alert("I NUMERI DA METTERE ENTRO "+tempo+" SECONDI SONO: "+pc);
 
@@ -53,7 +52,6 @@ function seconds(){
         clearInterval(timer);
     }
 }
-
 
 // timer starts after the alert 
 setTimeout(count, tempo*1000);
@@ -75,14 +73,13 @@ function count(){
                 if (numeroPlayer == pc[j] && notValid===false) {
                     numScore.push(pc[j]);
                      score++;
-                    }            
-                }
-                player.push(numeroPlayer);  
+                }            
             }
+            player.push(numeroPlayer);  
+        }
         else{
             console.log("Ti ho detto un numero da 1 a 100");
         }    
-            
      }
     console.log("=================================================");
     console.log("I numeri da ricordare erano : "+pc);
